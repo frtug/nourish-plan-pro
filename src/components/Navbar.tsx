@@ -33,8 +33,8 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#" className="font-serif text-xl tracking-tighter text-foreground">
-            Dr. Priya Sharma<span className="text-primary"> RDN</span>
+          <a href="#" className={`font-serif text-xl tracking-tighter transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
+            Dr. Priya Sharma<span className={scrolled ? "text-primary" : "text-white/70"}> RDN</span>
           </a>
 
           {/* Desktop nav */}
@@ -43,14 +43,22 @@ export default function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
-                className="font-sans text-sm tracking-tight text-foreground/60 hover:text-foreground transition-colors duration-200"
+                className={`font-sans text-sm tracking-tight transition-colors duration-300 ${
+                  scrolled
+                    ? "text-foreground/60 hover:text-foreground"
+                    : "text-white/75 hover:text-white"
+                }`}
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#plans"
-              className="font-sans text-sm tracking-tight px-4 py-2 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-200"
+              className={`font-sans text-sm tracking-tight px-4 py-2 rounded-full transition-colors duration-200 ${
+                scrolled
+                  ? "bg-accent text-accent-foreground hover:bg-terra-dark"
+                  : "bg-white/15 text-white border border-white/30 hover:bg-white/25"
+              }`}
             >
               Start Protocol
             </a>
@@ -59,7 +67,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-foreground/70 hover:text-foreground"
+            className={`md:hidden p-2 transition-colors duration-300 ${scrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
