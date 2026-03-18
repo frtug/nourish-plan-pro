@@ -8,11 +8,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
-          alt="Clinical nutrition — a cracked egg on ceramic"
+          alt="Colourful whole foods — the foundation of precision nutrition"
           className="w-full h-full object-cover object-center scale-105"
-          style={{ filter: "brightness(0.78) saturate(0.85)" }}
+          style={{ filter: "brightness(0.72) saturate(1.05)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-foreground/10" />
       </div>
 
       {/* Content */}
@@ -24,15 +24,15 @@ export default function HeroSection() {
           className="max-w-3xl"
         >
           <p className="font-sans text-sm tracking-[0.2em] uppercase text-primary-foreground/60 mb-6">
-            Evidence-Based Nutrition Science
+            Real Food · Real Results · Real Science
           </p>
           <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] tracking-tightest leading-display text-white mb-8 text-balance">
-            Biological clarity.{" "}
-            <em className="not-italic text-sage-300">Not just a diet.</em>
+            Eat with purpose.{" "}
+            <em className="not-italic text-sage-300">Live without limits.</em>
           </h1>
           <p className="font-sans text-lg md:text-xl leading-relaxed text-white/70 max-w-xl mb-10">
-            Precision nutritional protocols designed around your unique metabolic
-            profile — not trends, not guesswork.
+            Your plate is your most powerful prescription. Personalised nutrition
+            coaching rooted in food science — turning every meal into momentum.
           </p>
           <div className="flex flex-wrap gap-4">
             <motion.a
@@ -64,10 +64,10 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap gap-8 md:gap-16"
         >
           {[
-            { value: "10+", label: "Years in Practice" },
-            { value: "1,200+", label: "Clients Guided" },
+            { value: "10+", label: "Years Coaching" },
+            { value: "1,200+", label: "Lives Transformed" },
             { value: "8", label: "Certifications" },
-            { value: "94%", label: "Sustained Results" },
+            { value: "94%", label: "Goal Achievement" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-serif text-3xl text-white tracking-tight">{stat.value}</p>

@@ -3,20 +3,20 @@ import portraitImg from "@/assets/nutritionist-portrait.jpg";
 
 const pillars = [
   {
-    label: "Metabolic Profiling",
-    desc: "Individualized analysis of your basal metabolic rate, macro needs, and hormonal markers.",
+    label: "🥑 Food-First Philosophy",
+    desc: "Every protocol begins with whole, vibrant foods — ingredients chosen for their therapeutic power, not just their calorie count.",
   },
   {
-    label: "Gut Microbiome",
-    desc: "Evidence-based dietary interventions to support a resilient and diverse gut ecosystem.",
+    label: "🌿 Gut Health & Microbiome",
+    desc: "Targeted dietary interventions with prebiotic-rich foods to rebuild a thriving gut ecosystem and lasting energy.",
   },
   {
-    label: "Clinical Lab Integration",
-    desc: "Blood-work interpretation woven into every Elite Protocol for truly personalised guidance.",
+    label: "🔬 Metabolic Profiling",
+    desc: "Precision analysis of your blood markers, hormonal panel, and metabolic rate to build truly personalised meal plans.",
   },
   {
-    label: "Behavioural Science",
-    desc: "Habit formation and cognitive reframing to ensure long-term adherence, not just short-term compliance.",
+    label: "🧠 Mindful Eating Habits",
+    desc: "Behavioural coaching to rebuild your relationship with food — no guilt, no restriction, just sustainable abundance.",
   },
 ];
 
@@ -66,13 +66,13 @@ export default function AboutSection() {
               <em className="text-primary text-3xl">RDN · ISSN · IFM</em>
             </h2>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-5">
-              After completing her Master's in Clinical Nutrition from AIIMS and a Functional Medicine Fellowship in Boston, Dr. Priya built her practice on a single conviction: <strong className="text-foreground font-medium">nutrition is metabolic engineering, not moral instruction.</strong>
+              After completing her Master's in Clinical Nutrition from AIIMS and a Functional Medicine Fellowship in Boston, Dr. Priya built her practice on a single belief: <strong className="text-foreground font-medium">food is the most powerful medicine on your plate.</strong>
             </p>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-5">
-              She has consulted for elite athletes, corporate executives, and individuals managing complex chronic conditions including PCOS, hypothyroidism, and metabolic syndrome. Her protocols draw from peer-reviewed literature, not popular opinion.
+              She has coached elite athletes to peak performance, helped executives reclaim their energy, and guided individuals through PCOS, thyroid dysfunction, and metabolic syndrome — all through the transformative power of real, whole food.
             </p>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-10">
-              Her interdisciplinary approach integrates biochemistry, behavioural psychology, and culinary science — delivering dietary prescriptions as precise as any clinical intervention.
+              Dr. Priya believes that eating well should feel like abundance, not deprivation. Her colourful, science-backed meal plans are designed to make every bite count — delicious food that heals from the inside out.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
