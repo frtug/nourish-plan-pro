@@ -8,11 +8,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroImg}
-          alt="Clinical nutrition — a cracked egg on ceramic"
+          alt="Colourful whole foods — the foundation of precision nutrition"
           className="w-full h-full object-cover object-center scale-105"
-          style={{ filter: "brightness(0.78) saturate(0.85)" }}
+          style={{ filter: "brightness(0.72) saturate(1.05)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-foreground/10" />
       </div>
 
       {/* Content */}
