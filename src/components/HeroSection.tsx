@@ -64,10 +64,10 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap gap-8 md:gap-16"
         >
           {[
-            { value: "10+", label: "Years in Practice" },
-            { value: "1,200+", label: "Clients Guided" },
+            { value: "10+", label: "Years Coaching" },
+            { value: "1,200+", label: "Lives Transformed" },
             { value: "8", label: "Certifications" },
-            { value: "94%", label: "Sustained Results" },
+            { value: "94%", label: "Goal Achievement" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-serif text-3xl text-white tracking-tight">{stat.value}</p>
