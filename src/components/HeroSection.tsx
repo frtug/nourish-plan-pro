@@ -24,15 +24,15 @@ export default function HeroSection() {
           className="max-w-3xl"
         >
           <p className="font-sans text-sm tracking-[0.2em] uppercase text-primary-foreground/60 mb-6">
-            Evidence-Based Nutrition Science
+            Real Food · Real Results · Real Science
           </p>
           <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] tracking-tightest leading-display text-white mb-8 text-balance">
-            Biological clarity.{" "}
-            <em className="not-italic text-sage-300">Not just a diet.</em>
+            Eat with purpose.{" "}
+            <em className="not-italic text-sage-300">Live without limits.</em>
           </h1>
           <p className="font-sans text-lg md:text-xl leading-relaxed text-white/70 max-w-xl mb-10">
-            Precision nutritional protocols designed around your unique metabolic
-            profile — not trends, not guesswork.
+            Your plate is your most powerful prescription. Personalised nutrition
+            coaching rooted in food science — turning every meal into momentum.
           </p>
           <div className="flex flex-wrap gap-4">
             <motion.a
