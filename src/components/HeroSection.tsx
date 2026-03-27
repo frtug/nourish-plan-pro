@@ -10,7 +10,7 @@ export default function HeroSection() {
           src={heroImg}
           alt="Colourful whole foods — the foundation of precision nutrition"
           className="w-full h-full object-cover object-center scale-105"
-          style={{ filter: "brightness(0.72) saturate(1.05)" }}
+          style={{ filter: "brightness(0.29) saturate(1.05)" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-foreground/10" />
       </div>
@@ -42,7 +42,7 @@ export default function HeroSection() {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="font-sans text-sm px-7 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-300"
             >
-              Consult the Lab →
+              Start Now→
             </motion.a>
             <motion.a
               href="#about"
@@ -64,9 +64,9 @@ export default function HeroSection() {
           className="mt-16 flex flex-wrap gap-8 md:gap-16"
         >
           {[
-            { value: "10+", label: "Years Coaching" },
-            { value: "1,200+", label: "Lives Transformed" },
-            { value: "8", label: "Certifications" },
+            { value: "2+", label: "Years Coaching" },
+            { value: "100+", label: "Lives Transformed" },
+            { value: "4", label: "Certifications" },
             { value: "94%", label: "Goal Achievement" },
           ].map((stat) => (
             <div key={stat.label}>

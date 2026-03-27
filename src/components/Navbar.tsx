@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   { label: "About", href: "#about" },
   { label: "Certifications", href: "#certifications" },
-  { label: "Protocols", href: "#plans" },
+  { label: "Plans", href: "#plans" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -34,7 +34,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <a href="#" className={`font-serif text-xl tracking-tighter transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
-            Dr. Priya Sharma<span className={scrolled ? "text-primary" : "text-white/70"}> RDN</span>
+            Ms. Palak Mattoo<span className={scrolled ? "text-primary" : "text-white/70"}> </span>
           </a>
 
           {/* Desktop nav */}
@@ -54,13 +54,9 @@ export default function Navbar() {
             ))}
             <a
               href="#plans"
-              className={`font-sans text-sm tracking-tight px-4 py-2 rounded-full transition-colors duration-200 ${
-                scrolled
-                  ? "bg-accent text-accent-foreground hover:bg-terra-dark"
-                  : "bg-white/15 text-white border border-white/30 hover:bg-white/25"
-              }`}
+              className="font-sans text-sm px-7 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-300"
             >
-              Start Protocol
+              Start Plan
             </a>
           </nav>
 
@@ -98,9 +94,9 @@ export default function Navbar() {
             <a
               href="#plans"
               onClick={() => setMenuOpen(false)}
-              className="mt-6 font-sans text-base text-center px-6 py-3 rounded-full bg-accent text-accent-foreground"
+              className="mt-6 font-sans text-sm text-center px-7 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-300"
             >
-              Start Protocol →
+              Start Plan →
             </a>
           </motion.div>
         )}

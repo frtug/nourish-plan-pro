@@ -11,7 +11,7 @@ const socials = [
 const footerLinks = [
   { label: "About", href: "#about" },
   { label: "Certifications", href: "#certifications" },
-  { label: "Protocols", href: "#plans" },
+  { label: "Plans", href: "#plans" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -24,7 +24,7 @@ export default function SiteFooter() {
           {/* Brand */}
           <div>
             <h3 className="font-serif text-2xl tracking-tight text-background mb-3">
-              Dr. Priya Sharma<span className="text-sage-300"> RDN</span>
+              Ms. Palak Mattoo<span className="text-sage-300"> Nutritionist</span>
             </h3>
             <p className="font-sans text-sm leading-relaxed text-background/50 max-w-xs">
               Clinical nutrition practice grounded in metabolic science and behavioural precision.
@@ -72,12 +72,10 @@ export default function SiteFooter() {
               Clinic
             </p>
             <div className="space-y-3 text-sm text-background/60">
-              <p>hello@drpriyasharma.in</p>
-              <p>+91 98200 12345</p>
+              <p>palakmattoo@gmail.com</p>
+              <p>+91 9149931862</p>
               <p className="leading-relaxed">
-                403 Synapse Tower<br />
-                Bandra Kurla Complex<br />
-                Mumbai 400051
+                Bengaluru, 560075
               </p>
             </div>
           </div>
@@ -85,7 +83,7 @@ export default function SiteFooter() {
 
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <p className="font-sans text-xs text-background/30">
-            © {new Date().getFullYear()} Dr. Priya Sharma RDN. All rights reserved.
+            © {new Date().getFullYear()} Ms. Palak Mattoo. All rights reserved.
           </p>
           <p className="font-sans text-xs text-background/30">
             The content on this site is for informational purposes and does not constitute medical advice.

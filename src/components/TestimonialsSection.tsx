@@ -3,39 +3,27 @@ import { motion } from "framer-motion";
 const testimonials = [
   {
     quote:
-      "Dr. Sharma's protocol completely recalibrated my relationship with food. After years of fad diets, I finally have a biological framework that makes sense — my thyroid panel improved by over 30% within four months.",
-    name: "Dr. Aisha Menon",
-    role: "Consultant Surgeon, Apollo Hospitals",
+      "I've shifted to a much healthier lifestyle, and it feels far better than relying on junk food. I'm eating more fruits and vegetables, my energy levels are much better, I manage hunger pangs more easily, stay hydrated, and even sleep better now.",
+    name: "Deepak N",
+    role: "Lifestyle Transformation Client",
   },
   {
     quote:
-      "As a competitive triathlete, I needed a nutritionist who could translate biochemistry into performance gains. The Performance Protocol gave me a 12% improvement in VO2 max over a single season.",
-    name: "Rahul Krishnamurthy",
-    role: "Professional Triathlete",
+      "The diet plan is clearly helping my strength. Since increasing my protein intake, I've noticed a real physical difference, and it's encouraging to see how much nutrition alone can improve performance.",
+    name: "Falguni",
+    role: "Strength and Wellness Client",
   },
   {
     quote:
-      "Managing PCOS through diet felt impossible until I found this practice. The precision and patience in building my protocol was unlike anything I'd experienced. My insulin markers normalised within six months.",
-    name: "Deepika Nair",
-    role: "Senior Partner, McKinsey & Co.",
+      "I really appreciate how clear and practical the plan is. Even with a busy work schedule and frequent travel, the guidance is easy to follow, flexible with available ingredients, and realistic enough to sustain.",
+    name: "Abhishek",
+    role: "Busy Professional",
   },
   {
     quote:
-      "The blood-work integration in the Elite plan revealed patterns my GP had missed. For the first time, I have a nutrition plan that treats me as a biological individual, not a demographic.",
-    name: "Vikram Solanki",
-    role: "Founder, HealthTech Startup",
-  },
-  {
-    quote:
-      "I appreciate the clinical, evidence-first approach. There is zero sensationalism — just precise, personalised guidance backed by research. My gut health has transformed completely.",
-    name: "Sunita Bose",
-    role: "Research Scientist, CSIR",
-  },
-  {
-    quote:
-      "The 24/7 WhatsApp support sounds like a gimmick but it's not. When my blood work came back during a stressful week, Dr. Sharma walked me through every marker and adjusted my protocol same day.",
-    name: "Arjun Kapoor",
-    role: "Executive Director, Private Equity",
+      "The plan is structured, easy to start, and simple to track. Having a clear calorie target and a defined timeline keeps me focused and makes the entire process feel achievable.",
+    name: "Wasif",
+    role: "Goal-Focused Client",
   },
 ];
 
@@ -75,7 +63,7 @@ export default function TestimonialsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 gap-6"
         >
           {testimonials.map((t) => (
             <motion.div

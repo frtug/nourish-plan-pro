@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import portraitImg from "@/assets/nutritionist-portrait.jpg";
+import portraitImg from "@/assets/nutritionist-portrait.png";
 
 const pillars = [
   {
-    label: "🥑 Food-First Philosophy",
-    desc: "Every protocol begins with whole, vibrant foods — ingredients chosen for their therapeutic power, not just their calorie count.",
+    label: "Food-First Philosophy",
+    desc: "Every plan begins with whole, vibrant foods — ingredients chosen for their therapeutic power, not just their calorie count.",
   },
   {
     label: "🌿 Gut Health & Microbiome",
@@ -36,16 +36,16 @@ export default function AboutSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-hover aspect-[4/5]">
               <img
                 src={portraitImg}
-                alt="Dr. Priya Sharma RDN – Clinical Nutritionist"
+                alt="Ms. Palak Mattoo – Nutritionist"
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
             </div>
             {/* Floating credential badge */}
             <div className="absolute -bottom-6 -right-4 md:-right-8 bg-card border border-border shadow-hover rounded-2xl px-5 py-4">
-              <p className="font-serif text-3xl font-semibold text-primary">10+</p>
+              <p className="font-serif text-3xl font-semibold text-primary">2+</p>
               <p className="font-sans text-xs text-muted-foreground tracking-wide uppercase mt-0.5">
-                Years in Clinical Practice
+                Years of Practice
               </p>
             </div>
           </motion.div>
@@ -61,18 +61,15 @@ export default function AboutSection() {
               About the Practitioner
             </p>
             <h2 className="font-serif text-4xl md:text-5xl tracking-tighter leading-heading text-foreground mb-6">
-              Dr. Priya Sharma
+              Ms Palak Mattoo
               <br />
-              <em className="text-primary text-3xl">RDN · ISSN · IFM</em>
+              {/* <em className="text-primary text-3xl">RDN · ISSN · IFM</em> */}
             </h2>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-5">
-              After completing her Master's in Clinical Nutrition from AIIMS and a Functional Medicine Fellowship in Boston, Dr. Priya built her practice on a single belief: <strong className="text-foreground font-medium">food is the most powerful medicine on your plate.</strong>
-            </p>
-            <p className="font-sans text-base leading-relaxed text-foreground/70 mb-5">
-              She has coached elite athletes to peak performance, helped executives reclaim their energy, and guided individuals through PCOS, thyroid dysfunction, and metabolic syndrome — all through the transformative power of real, whole food.
+              I completed my Bachelor's in Food and Nutrition at PSPS (GCW), worked on nutrition-focused projects, and built my practice on one belief: <strong className="text-foreground font-medium">food is the most powerful medicine on your plate.</strong>
             </p>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-10">
-              Dr. Priya believes that eating well should feel like abundance, not deprivation. Her colourful, science-backed meal plans are designed to make every bite count — delicious food that heals from the inside out.
+              I help busy professionals and clients with PCOS, thyroid dysfunction, and metabolic syndrome through science-backed, personalised meal plans, metabolic profiling, and behavioural coaching. I focus on gut health, blood sugar balance, and mindful eating so you can build a sustainable, guilt-free relationship with food.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

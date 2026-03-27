@@ -1,66 +1,78 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 
 const plans = [
   {
-    id: "foundation",
-    name: "The Foundation",
-    tagline: "Begin the Protocol",
+    id: "weekly-starter",
+    name: "Weekly Starter",
+    tagline: "Try Before You Commit",
     price: "₹499",
-    period: "/month",
+    period: "/week",
     description:
-      "An evidence-based starting point. Ideal for those new to precision nutrition who want a structured, science-backed dietary framework.",
+      "Perfect if you want a low-risk start. Get a practical weekly plan, clear meal structure, and expert direction you can begin today.",
     features: [
-      "Personalised PDF Nutrition Guide (28-day)",
-      "Macro & micronutrient targets",
-      "Meal timing framework",
-      "Email Q&A support (48h response)",
-      "Weekly progress tracker template",
-      "Access to The Lab resource library",
+      "1-week personalised meal blueprint",
+      "Daily meal timing guidance",
+      "Shopping list for the week",
+      "One plan adjustment in the same week",
+      "Email support (48h response)",
     ],
-    cta: "Start Your Protocol",
+    cta: "Start This Week",
     highlight: false,
   },
   {
-    id: "performance",
-    name: "The Performance",
-    tagline: "Optimise Your Biology",
+    id: "monthly-momentum",
+    name: "Monthly Momentum",
+    tagline: "Build Consistency",
     price: "₹1,499",
     period: "/month",
     description:
-      "Bi-weekly recalibration and custom macro tracking. Designed for professionals and active individuals who need adaptive, data-driven guidance.",
+      "Best for building real habits. Follow a full monthly plan with regular check-ins so you stay consistent, motivated, and on track.",
     features: [
-      "Everything in Foundation",
-      "Bi-weekly 1:1 video check-ins (30 min)",
-      "Custom macro and micronutrient tracking",
-      "Adaptive protocol updates monthly",
-      "Supplement audit & recommendations",
+      "Everything in Weekly Starter",
+      "4-week personalised plan",
+      "Bi-weekly progress review",
+      "Macro guidance as needed",
       "Priority email support (24h response)",
-      "Gut health assessment questionnaire",
     ],
-    cta: "Start Your Protocol",
+    cta: "Choose Monthly",
     highlight: true,
   },
   {
-    id: "elite",
-    name: "The Elite",
-    tagline: "Total Metabolic Command",
-    price: "₹2,999",
-    period: "/month",
+    id: "six-month-reset",
+    name: "6-Month Reset",
+    tagline: "Deep Transformation",
+    price: "₹6,000",
+    period: "/6 months",
     description:
-      "Full clinical immersion. Unlimited access, blood-work integration, and real-time WhatsApp support for clients who demand the highest level of precision.",
+      "Designed for lasting results. Over six months, I refine your plan step by step so fat loss, hormonal balance, and energy improvements become sustainable.",
     features: [
-      "Everything in Performance",
-      "Weekly 1:1 strategy calls (45 min)",
-      "Blood-work analysis & integration",
-      "Hormone & metabolic panel review",
-      "24/7 WhatsApp direct access",
-      "Grocery & meal prep consultation",
-      "Custom recipe development",
-      "DEXA / body composition guidance",
+      "Everything in Monthly Momentum",
+      "Fortnightly plan recalibration",
+      "Lifestyle and routine correction",
+      "Guided plate and portion strategy",
+      "Faster query resolution",
     ],
-    cta: "Consult the Lab",
+    cta: "Commit for 6 Months",
+    highlight: false,
+  },
+  {
+    id: "annual-signature",
+    name: "Annual Signature",
+    tagline: "Best Value Plan",
+    price: "₹9,999",
+    period: "/year + 2 months",
+    description:
+      "Your highest-value option. Get long-term accountability, seasonal plan updates, and 2 extra months free to lock in a healthier lifestyle for good.",
+    features: [
+      "Everything in 6-Month Reset",
+      "12-month guided transformation",
+      "2 additional months at no extra cost",
+      "Priority support and faster turnarounds",
+      "Long-term maintenance strategy",
+    ],
+    cta: "Get Annual Offer",
     highlight: false,
   },
 ];
@@ -77,6 +89,40 @@ const cardAnim = {
 
 export default function PlansSection() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [whatsappHighlight, setWhatsappHighlight] = useState(false);
+  const whatsappNumber = "9149931862";
+
+  const handlePlanCtaClick = (plan: (typeof plans)[number], e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelected(plan.id);
+
+    window.dispatchEvent(
+      new CustomEvent("plan:selected", {
+        detail: {
+          id: plan.id,
+          name: plan.name,
+          price: plan.price,
+          period: plan.period,
+        },
+      }),
+    );
+
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const getPlanWhatsappLink = (planName: string, planPrice: string, planPeriod: string) => {
+    const message = `Hi Palak, I want to enroll in the ${planName} plan (${planPrice}${planPeriod}). Please share the next steps.`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  };
+
+  const triggerWhatsappHighlight = () => {
+    setWhatsappHighlight(false);
+    window.setTimeout(() => setWhatsappHighlight(true), 10);
+    window.setTimeout(() => setWhatsappHighlight(false), 1300);
+  };
+
+  const generalWhatsappLink = `https://wa.me/${whatsappNumber}`;
 
   return (
     <section id="plans" className="py-24 md:py-36 bg-secondary">
@@ -89,10 +135,10 @@ export default function PlansSection() {
           className="text-center mb-16"
         >
           <p className="font-sans text-xs tracking-[0.2em] uppercase text-primary mb-3">
-            Nutritional Protocols
+            Nutrition Plans
           </p>
           <h2 className="font-serif text-4xl md:text-6xl tracking-tighter leading-heading text-foreground mb-5">
-            Choose Your Protocol
+            Choose Your Plan
           </h2>
           <p className="font-sans text-base text-muted-foreground max-w-xl mx-auto">
             Every plan is grounded in evidence. The difference is the depth of personalisation.
@@ -104,7 +150,7 @@ export default function PlansSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {plans.map((plan) => (
             <motion.div
@@ -166,7 +212,7 @@ export default function PlansSection() {
                     ? "bg-accent text-accent-foreground hover:bg-terra-dark"
                     : "bg-primary text-primary-foreground hover:bg-sage-600"
                 }`}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => handlePlanCtaClick(plan, e)}
               >
                 {plan.cta} →
               </motion.a>
@@ -181,8 +227,55 @@ export default function PlansSection() {
           transition={{ delay: 0.5 }}
           className="text-center font-sans text-xs text-muted-foreground mt-8"
         >
-          All plans include a complimentary 15-minute discovery call. Cancel anytime.
+          All plans include a complimentary 15-minute discovery call. Not sure which one’s right for you?{" "}
+          <motion.button
+          type="button"
+          // onHoverEnd={triggerWhatsappHighlight}
+          onClick={triggerWhatsappHighlight}
+          whileHover={{ y: -2, scale: 1.05 }}
+          whileTap={{ scale: 2.98 }}
+          className="mx-auto mt-4"
+        >
+          🕵️ 
+        </motion.button>
         </motion.p>
+
+        
+
+        <motion.a
+          href={generalWhatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          animate={
+            whatsappHighlight
+              ? {
+                  scale: [1, 1.1, 1],
+                  y: [0, -6, 0],
+                  boxShadow: [
+                    "0 10px 24px rgba(22, 163, 74, 0.35)",
+                    "0 0 0 10px rgba(22, 163, 74, 0.2)",
+                    "0 10px 24px rgba(22, 163, 74, 0.35)",
+                  ],
+                }
+              : {
+                  scale: 1,
+                  y: 0,
+                  boxShadow: "0 10px 24px rgba(22, 163, 74, 0.35)",
+                }
+          }
+          transition={
+            whatsappHighlight
+              ? { duration: 1.1, ease: [0.16, 1, 0.3, 1] }
+              : { duration: 0.2 }
+          }
+          whileHover={{ y: -2, scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-3 text-white shadow-lg hover:bg-green-700 transition-colors duration-300"
+        >
+          <MessageCircle size={35} />
+          {/* <span className="font-sans text-sm font-medium"></span> */}
+        </motion.a>
       </div>
     </section>
   );

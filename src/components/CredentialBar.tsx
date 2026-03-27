@@ -11,12 +11,10 @@ export default function CredentialBar() {
       <div className="max-w-[1200px] mx-auto px-6 h-12 flex items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10 overflow-x-auto no-scrollbar">
           {[
-            "RDN Certified",
-            "ISSN Sport Nutrition",
-            "IFM Functional Medicine",
-            "CSSD Specialist",
-            "10+ Years Practice",
-            "1,200+ Clients",
+            "HWN: Holistic Wellbeing Nutrition",
+            "ACN: Adolescent and Child Nutrition",
+            "WH: Women Health",
+            "CFN: Certified Functional Nutrition",
           ].map((item, i) => (
             <span
               key={i}

@@ -3,52 +3,24 @@ import { Award } from "lucide-react";
 
 const certs = [
   {
-    acronym: "RDN",
-    full: "Registered Dietitian Nutritionist",
-    body: "Academy of Nutrition & Dietetics",
-    year: "2014",
+    acronym: "HWN",
+    full: "Holistic Wellbeing Nutrition (Men and Women)",
+    desc: "Integrative nutrition planning that improves energy, digestion, sleep, and long-term lifestyle balance.",
   },
   {
-    acronym: "ISSN",
-    full: "Certified Sports Nutritionist",
-    body: "Int'l Society of Sports Nutrition",
-    year: "2016",
+    acronym: "ACN",
+    full: "Adolescent and Child Nutrition",
+    desc: "Age-specific nutrition guidance for healthy growth, stronger immunity, and better learning performance.",
   },
   {
-    acronym: "CSSD",
-    full: "Board Certified Specialist in Sports Dietetics",
-    body: "Commission on Dietetic Registration",
-    year: "2017",
+    acronym: "WH",
+    full: "Women Health",
+    desc: "Targeted nutritional care for hormonal balance, menstrual wellness, PCOS support, and metabolic health.",
   },
   {
     acronym: "IFM",
-    full: "Certified Functional Medicine Practitioner",
-    body: "Institute for Functional Medicine",
-    year: "2019",
-  },
-  {
-    acronym: "CNS",
-    full: "Certified Nutrition Specialist",
-    body: "Board for Certification of Nutrition Specialists",
-    year: "2020",
-  },
-  {
-    acronym: "GAPS",
-    full: "GAPS Certified Practitioner",
-    body: "GAPS Trained Practitioners Org.",
-    year: "2021",
-  },
-  {
-    acronym: "FNLP",
-    full: "Functional Nutrition Lab Practitioner",
-    body: "Functional Nutrition Alliance",
-    year: "2022",
-  },
-  {
-    acronym: "CGP",
-    full: "Certified Gut & Psychology Protocol",
-    body: "GAPS Diet Foundation",
-    year: "2023",
+    full: "CFN (Certified Functional Nutrition)",
+    desc: "Science-backed nutrition plans designed to address root causes and build sustainable health outcomes.",
   },
 ];
 
@@ -79,7 +51,7 @@ export default function CertificationsSection() {
           <h2 className="font-serif text-4xl md:text-6xl tracking-tighter leading-heading text-foreground">
             The Evidence Behind
             <br />
-            <em className="text-primary">Every Protocol</em>
+            <em className="text-primary">Every Plan</em>
           </h2>
         </motion.div>
 
@@ -105,8 +77,7 @@ export default function CertificationsSection() {
               <p className="font-sans text-sm font-medium text-foreground leading-snug mb-1">
                 {c.full}
               </p>
-              <p className="font-sans text-xs text-muted-foreground leading-snug">{c.body}</p>
-              <p className="font-sans text-xs text-muted-foreground/60 mt-3">{c.year}</p>
+              <p className="font-sans text-xs text-muted-foreground leading-snug">{c.desc}</p>
             </motion.div>
           ))}
         </motion.div>
