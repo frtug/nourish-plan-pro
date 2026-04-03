@@ -72,7 +72,7 @@ export default function SiteFooter() {
               Clinic
             </p>
             <div className="space-y-3 text-sm text-background/60">
-              <p>palakmattoo@gmail.com</p>
+              <p>contact@palakmattoo.in</p>
               <p>+91 9149931862</p>
               <p className="leading-relaxed">
                 Bengaluru, 560075

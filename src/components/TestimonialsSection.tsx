@@ -74,12 +74,12 @@ export default function TestimonialsSection() {
               <div className="mb-6">
                 <span className="font-serif text-5xl text-primary/30 leading-none">"</span>
               </div>
-              <blockquote className="font-sans text-sm leading-relaxed text-foreground/80 mb-8">
+              <blockquote className="font-sans text-lg leading-relaxed text-foreground/80 mb-8">
                 {t.quote}
               </blockquote>
               <div className="border-t border-border pt-5">
-                <p className="font-sans text-sm font-semibold text-foreground">{t.name}</p>
-                <p className="font-sans text-xs text-muted-foreground mt-0.5">{t.role}</p>
+                <p className="font-sans text-base font-semibold text-foreground">{t.name}</p>
+                <p className="font-sans text-sm text-muted-foreground mt-0.5">{t.role}</p>
               </div>
             </motion.div>
           ))}

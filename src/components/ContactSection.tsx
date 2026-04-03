@@ -15,7 +15,7 @@ export default function ContactSection() {
   const [error, setError] = useState("");
   const [selectedPlan, setSelectedPlan] = useState<SelectedPlan | null>(null);
   const [planFocusMode, setPlanFocusMode] = useState(false);
-  const contactEmail = "palakmattoo11@gmail.com";
+  const contactEmail = "contact@palakmattoo.in";
   const whatsappNumber = "9149931862";
   const nameInputRef = useRef<HTMLInputElement>(null);
 
