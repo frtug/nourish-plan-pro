@@ -31,7 +31,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+            className="relative md:pb-8"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-hover aspect-[4/5]">
               <img
@@ -42,7 +42,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
             </div>
             {/* Floating credential badge */}
-            <div className="absolute -bottom-6 -right-4 md:-right-8 bg-card border border-border shadow-hover rounded-2xl px-5 py-4">
+            <div className="absolute bottom-4 right-4 md:-bottom-6 md:-right-8 bg-card border border-border shadow-hover rounded-2xl px-5 py-4">
               <p className="font-serif text-3xl font-semibold text-primary">2+</p>
               <p className="font-sans text-xs text-muted-foreground tracking-wide uppercase mt-0.5">
                 Years of Practice

@@ -74,31 +74,61 @@ export default function Navbar() {
       {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-background/98 backdrop-blur-sm pt-20 px-6 flex flex-col gap-2 md:hidden"
-          >
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-serif text-4xl tracking-tight text-foreground/80 hover:text-foreground py-3 border-b border-border"
-              >
-                {l.label}
-              </a>
-            ))}
-            <a
-              href="#plans"
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/60 md:hidden"
               onClick={() => setMenuOpen(false)}
-              className="mt-6 font-sans text-sm text-center px-7 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-300"
+            />
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-0 right-0 bottom-0 z-50 w-[75vw] max-w-xs bg-[#1c2e1e] flex flex-col pt-20 px-8 pb-10 md:hidden shadow-2xl"
             >
-              Start Plan →
-            </a>
-          </motion.div>
+              {/* Close button */}
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="absolute top-5 right-5 text-white/60 hover:text-white transition-colors"
+                aria-label="Close menu"
+              >
+                <X size={22} />
+              </button>
+
+              <nav className="flex flex-col gap-1 flex-1">
+                {links.map((l, i) => (
+                  <motion.a
+                    key={l.label}
+                    href={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.06, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="font-serif text-2xl text-white/80 hover:text-white py-4 border-b border-white/10 tracking-tight transition-colors duration-200"
+                  >
+                    {l.label}
+                  </motion.a>
+                ))}
+              </nav>
+
+              <motion.a
+                href="#plans"
+                onClick={() => setMenuOpen(false)}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.3 }}
+                className="font-sans text-sm text-center px-7 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-terra-dark transition-colors duration-300"
+              >
+                Start Plan →
+              </motion.a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
