@@ -7,7 +7,7 @@ const pillars = [
     desc: "Every plan begins with whole, vibrant foods — ingredients chosen for their therapeutic power, not just their calorie count.",
   },
   {
-    label: "🌿 Gut Health & Microbiome",
+    label: "🌿 Gut Health & Microbiome ",
     desc: "Targeted dietary interventions with prebiotic-rich foods to rebuild a thriving gut ecosystem and lasting energy.",
   },
   {
