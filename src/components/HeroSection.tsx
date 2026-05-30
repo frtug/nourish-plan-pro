@@ -23,10 +23,10 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="max-w-3xl"
         >
-          <p className="font-sans text-sm tracking-[0.2em] uppercase text-primary-foreground/60 ">
+          <p className="mt-12 font-sans text-sm tracking-[0.2em] uppercase text-primary-foreground/60 opacity-50">
             Real Food · Real Science
           </p>
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-[7rem] tracking-tightest leading-display text-white mb-8 text-balance">
+          <h1 className="font-serif mt-8 text-6xl md:text-8xl lg:text-[7rem] tracking-tightest leading-display text-white mb-8 text-balance">
             Eat with purpose.{" "}
             <em className="not-italic text-sage-300">Live without limits.</em>
           </h1>
