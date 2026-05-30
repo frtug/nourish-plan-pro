@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoMark from "@/assets/logo-mark.png";
 
 const links = [
   { label: "About", href: "#about" },
@@ -33,8 +34,17 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#" className={`font-serif text-xl tracking-tighter transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
-            Ms. Palak Mattoo<span className={scrolled ? "text-primary" : "text-white/70"}> </span>
+          <a href="#" className="flex items-center gap-2.5 group">
+            <img
+              src={logoMark}
+              alt="RM Lifestyle Coach"
+              className={`h-10 w-10 object-contain transition-all duration-300 ${
+                scrolled ? "" : "brightness-0 invert"
+              }`}
+            />
+            <span className={`font-serif text-lg leading-tight tracking-tight transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
+              Ms. Palak Mattoo
+            </span>
           </a>
 
           {/* Desktop nav */}
@@ -92,6 +102,9 @@ export default function Navbar() {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="fixed top-0 right-0 bottom-0 z-50 w-[75vw] max-w-xs bg-[#1c2e1e] flex flex-col pt-20 px-8 pb-10 md:hidden shadow-2xl"
             >
+              <div className="absolute top-5 left-6 flex items-center gap-2">
+                <img src={logoMark} alt="" className="h-9 w-9 object-contain brightness-0 invert" />
+              </div>
               {/* Close button */}
               <button
                 onClick={() => setMenuOpen(false)}
