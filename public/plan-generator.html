@@ -462,7 +462,7 @@
             {
                 id: 1, name: "Meal 1 · Morning Ritual",
                 items: [{ name: "Soaked oats with berries", qty: 50, unit: "g", cal: 190, p: 6, c: 30, f: 3 }],
-                altItems: []
+                altGroups: []
             }
         ],
         supps: [
@@ -564,7 +564,7 @@
         const container = document.getElementById('diet-editor');
         container.innerHTML = "";
         data.meals.forEach((meal, mIdx) => {
-            if (!meal.altItems) meal.altItems = [];
+            if (!meal.altGroups) meal.altGroups = [];
             let html = `<div class="meal-editor-box">
                 <div class="meal-editor-header">
                     <input value="${escapeAttr(meal.name)}" oninput="updateMealName(${mIdx}, this.value)" style="flex:1;" />
@@ -577,30 +577,39 @@
                 <div class="grid-row-food" style="color:var(--panel-text-muted); font-size:0.62rem; text-transform:uppercase; letter-spacing:0.1em;">
                     <div>Item</div><div>Qty</div><div>Unit</div><div>Cal</div><div>P</div><div>C</div><div>F</div><div></div>
                 </div>`;
-            meal.items.forEach((item, iIdx) => html += getFoodRowHTML(mIdx, iIdx, item, 'main'));
+            meal.items.forEach((item, iIdx) => html += getFoodRowHTML(mIdx, null, iIdx, item, 'main'));
             html += `<button class="btn-add" onclick="addFood(${mIdx},'main')">+ Add Item</button>`;
 
-            html += `<div class="alt-divider"><span>Alternative Option</span></div>`;
-            meal.altItems.forEach((item, iIdx) => html += getFoodRowHTML(mIdx, iIdx, item, 'alt'));
-            html += `<button class="btn-add" onclick="addFood(${mIdx},'alt')">+ Add Alternative</button>`;
+            html += `<div class="alt-divider"><span>Alternative Options</span></div>`;
+            meal.altGroups.forEach((group, gIdx) => {
+                html += `<div class="alt-group" style="margin-bottom:12px; padding:10px 12px; border:1px dashed rgba(255,255,255,0.12); border-radius:10px; background:rgba(255,255,255,0.04);">`;
+                html += `<div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px;">
+                    <strong style="font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase;">Alternative ${gIdx + 1}</strong>
+                    <button class="btn-icon" onclick="delAltGroup(${mIdx},${gIdx})" title="Remove group" style="color:#ff9b8a;">×</button>
+                </div>`;
+                group.items.forEach((item, iIdx) => html += getFoodRowHTML(mIdx, gIdx, iIdx, item, 'alt'));
+                html += `<button class="btn-add" onclick="addFood(${mIdx},'alt',${gIdx})">+ Add Alternative Item</button>`;
+                html += `</div>`;
+            });
+            html += `<button class="btn-add" onclick="addAltGroup(${mIdx})">+ Add Alternative Group</button>`;
             html += `</div>`;
             container.innerHTML += html;
         });
         renderDietPreview();
     }
-    function getFoodRowHTML(mIdx, iIdx, item, type) {
+    function getFoodRowHTML(mIdx, gIdx, iIdx, item, type) {
         const units = ['g','ml','pc','oz','cup','sc'];
         return `<div class="grid-row-food">
-            <input value="${escapeAttr(item.name)}" oninput="updFood(${mIdx},${iIdx},'name',this.value,'${type}')" placeholder="Food..." />
-            <input type="number" value="${item.qty}" oninput="updFood(${mIdx},${iIdx},'qty',this.value,'${type}')" />
-            <select onchange="updFood(${mIdx},${iIdx},'unit',this.value,'${type}')">
+            <input value="${escapeAttr(item.name)}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'name',this.value,'${type}')" placeholder="Food..." />
+            <input type="number" value="${item.qty}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'qty',this.value,'${type}')" />
+            <select onchange="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'unit',this.value,'${type}')">
                 ${units.map(u => `<option value="${u}" ${item.unit===u?'selected':''}>${u}</option>`).join('')}
             </select>
-            <input type="number" value="${item.cal}" oninput="updFood(${mIdx},${iIdx},'cal',this.value,'${type}')" />
-            <input type="number" value="${item.p}" oninput="updFood(${mIdx},${iIdx},'p',this.value,'${type}')" />
-            <input type="number" value="${item.c}" oninput="updFood(${mIdx},${iIdx},'c',this.value,'${type}')" />
-            <input type="number" value="${item.f}" oninput="updFood(${mIdx},${iIdx},'f',this.value,'${type}')" />
-            <button class="btn-icon" onclick="delFood(${mIdx},${iIdx},'${type}')" style="color:#ff9b8a;">×</button>
+            <input type="number" value="${item.cal}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'cal',this.value,'${type}')" />
+            <input type="number" value="${item.p}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'p',this.value,'${type}')" />
+            <input type="number" value="${item.c}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'c',this.value,'${type}')" />
+            <input type="number" value="${item.f}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'f',this.value,'${type}')" />
+            <button class="btn-icon" onclick="delFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'${type}')" style="color:#ff9b8a;">×</button>
         </div>`;
     }
     function renderDietPreview() {
@@ -613,9 +622,12 @@
                 rows += createPreviewRow(item);
                 mCal += +item.cal; mP += +item.p; mC += +item.c; mF += +item.f;
             });
-            if (meal.altItems && meal.altItems.length > 0) {
-                rows += `<tr class="alt-row-divider"><td colspan="6">OR · ALTERNATIVE</td></tr>`;
-                meal.altItems.forEach(item => rows += createPreviewRow(item));
+            if (meal.altGroups && meal.altGroups.length > 0) {
+                meal.altGroups.forEach((group, gIdx) => {
+                    if (!group.items || !group.items.length) return;
+                    rows += `<tr class="alt-row-divider"><td colspan="6">OR · ALTERNATIVE ${gIdx + 1}</td></tr>`;
+                    group.items.forEach(item => rows += createPreviewRow(item));
+                });
             }
             container.innerHTML += `<div class="diet-section">
                 <div class="diet-header">${escapeHtml(meal.name)} <span></span></div>
@@ -658,7 +670,7 @@
             <td style="text-align:center;">${item.f}</td>
         </tr>`;
     }
-    function addMealSection() { data.meals.push({ id: Date.now(), name: "Meal " + (data.meals.length+1), items: [], altItems: [] }); renderDietEditor(); }
+    function addMealSection() { data.meals.push({ id: Date.now(), name: "Meal " + (data.meals.length+1), items: [], altGroups: [] }); renderDietEditor(); }
     function moveMeal(idx, dir) {
         if (idx + dir >= 0 && idx + dir < data.meals.length) {
             [data.meals[idx], data.meals[idx+dir]] = [data.meals[idx+dir], data.meals[idx]];
@@ -667,17 +679,39 @@
     }
     function delMeal(idx) { if (confirm("Delete this meal section?")) { data.meals.splice(idx,1); renderDietEditor(); } }
     function updateMealName(idx, val) { data.meals[idx].name = val; renderDietPreview(); }
-    function addFood(mIdx, type) {
-        const target = type === 'alt' ? data.meals[mIdx].altItems : data.meals[mIdx].items;
-        target.push({ name:"", qty:100, unit:'g', cal:0, p:0, c:0, f:0 });
+    function addFood(mIdx, type, gIdx) {
+        if (type === 'alt') {
+            const group = data.meals[mIdx].altGroups[gIdx];
+            if (!group) return;
+            group.items.push({ name:"", qty:100, unit:'g', cal:0, p:0, c:0, f:0 });
+        } else {
+            data.meals[mIdx].items.push({ name:"", qty:100, unit:'g', cal:0, p:0, c:0, f:0 });
+        }
         renderDietEditor();
     }
-    function delFood(mIdx, iIdx, type) {
-        const target = type === 'alt' ? data.meals[mIdx].altItems : data.meals[mIdx].items;
-        target.splice(iIdx,1); renderDietEditor();
+    function addAltGroup(mIdx) {
+        data.meals[mIdx].altGroups.push({ items: [] });
+        renderDietEditor();
     }
-    function updFood(mIdx, iIdx, field, val, type) {
-        const target = type === 'alt' ? data.meals[mIdx].altItems : data.meals[mIdx].items;
+    function delAltGroup(mIdx, gIdx) {
+        data.meals[mIdx].altGroups.splice(gIdx, 1);
+        renderDietEditor();
+    }
+    function delFood(mIdx, gIdx, iIdx, type) {
+        if (type === 'alt') {
+            const group = data.meals[mIdx].altGroups[gIdx];
+            if (!group) return;
+            group.items.splice(iIdx,1);
+        } else {
+            data.meals[mIdx].items.splice(iIdx,1);
+        }
+        renderDietEditor();
+    }
+    function updFood(mIdx, gIdx, iIdx, field, val, type) {
+        const target = type === 'alt'
+            ? (data.meals[mIdx].altGroups[gIdx] || {}).items
+            : data.meals[mIdx].items;
+        if (!target || !target[iIdx]) return;
         target[iIdx][field] = (field==='name'||field==='unit') ? val : Number(val);
         renderDietPreview();
     }
@@ -727,7 +761,9 @@
             data.profile = { ...data.profile, ...loaded.profile };
             data.stats = loaded.stats || data.stats;
             data.supps = loaded.supps || [];
-            if (loaded.meals) data.meals = loaded.meals.map(m => ({ ...m, altItems: m.altItems || [] }));
+            if (loaded.meals) data.meals = loaded.meals.map(m => ({ ...m,
+                altGroups: m.altGroups || (m.altItems ? [{ items: m.altItems }] : [])
+            }));
 
             const ids = ['inName','inHeight','inWeight','inAge','inOcc','inSleep','inSteps',
                          'inPrimGoal','inSecGoal','inChal','inStress','inMed','inStart','inEnd','inNotes',
