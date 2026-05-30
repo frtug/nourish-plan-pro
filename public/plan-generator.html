@@ -274,7 +274,7 @@
         <h2>1 · Coach Details</h2>
         <div class="grid-2">
             <div class="control-group"><label>Coach Name</label><input id="inCoachName" oninput="render()" placeholder="Ms. Palak Mattoo" /></div>
-            <div class="control-group"><label>Coach Email</label><input id="inCoachEmail" oninput="render()" placeholder="hello@palakmattoo.com" /></div>
+            <div class="control-group"><label>Coach Email</label><input id="inCoachEmail" oninput="render()" placeholder="contact@palakmattoo.in" /></div>
         </div>
 
         <h2>2 · Client Profile</h2>
@@ -343,7 +343,7 @@
             </div>
             <div class="coach-info-header">
                 <span>Coach</span><div id="outCoachName0">Ms. Palak Mattoo</div>
-                <span>Email</span><div id="outCoachEmail0">hello@palakmattoo.com</div>
+                <span>Email</span><div id="outCoachEmail0">contact@palakmattoo.in</div>
             </div>
         </div>
 
@@ -383,7 +383,7 @@
             </div>
             <div class="coach-info-header">
                 <span>Coach</span><div id="outCoachName1">Ms. Palak Mattoo</div>
-                <span>Email</span><div id="outCoachEmail1">hello@palakmattoo.com</div>
+                <span>Email</span><div id="outCoachEmail1">contact@palakmattoo.in</div>
             </div>
         </div>
 
@@ -418,7 +418,7 @@
             </div>
             <div class="coach-info-header">
                 <span>Coach</span><div id="outCoachName2">Ms. Palak Mattoo</div>
-                <span>Email</span><div id="outCoachEmail2">hello@palakmattoo.com</div>
+                <span>Email</span><div id="outCoachEmail2">hello@palakmattoo.in</div>
             </div>
         </div>
 
@@ -440,7 +440,7 @@
         logo: "",
         profile: {
             coachName: "Ms. Palak Mattoo",
-            coachEmail: "hello@palakmattoo.com",
+            coachEmail: "contact@palakmattoo.in",
             name: "", height: "", weight: "", age: "",
             occ: "", sleep: "", steps: "",
             primGoal: "", secGoal: "",
@@ -516,7 +516,7 @@
             const n = document.getElementById('outCoachName' + num);
             const m = document.getElementById('outCoachEmail' + num);
             if (n) n.innerText = data.profile.coachName || "Ms. Palak Mattoo";
-            if (m) m.innerText = data.profile.coachEmail || "hello@palakmattoo.com";
+            if (m) m.innerText = data.profile.coachEmail || "contact@palakmattoo.in";
         });
 
         updateLogos();
@@ -598,7 +598,7 @@
         renderDietPreview();
     }
     function getFoodRowHTML(mIdx, gIdx, iIdx, item, type) {
-        const units = ['g','ml','pc','oz','cup','sc'];
+        const units = ['g','ml','pc','oz','cup','sc','tsp','tbsp'];
         return `<div class="grid-row-food">
             <input value="${escapeAttr(item.name)}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'name',this.value,'${type}')" placeholder="Food..." />
             <input type="number" value="${item.qty}" oninput="updFood(${mIdx},${gIdx === null ? 'null' : gIdx},${iIdx},'qty',this.value,'${type}')" />
