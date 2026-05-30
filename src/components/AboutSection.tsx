@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Award } from "lucide-react";
 import portraitImg from "@/assets/nutritionist-portrait.png";
 
 const pillars = [
