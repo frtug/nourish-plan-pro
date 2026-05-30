@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Award } from "lucide-react";
 import portraitImg from "@/assets/nutritionist-portrait.png";
 
 const pillars = [
@@ -60,11 +61,29 @@ export default function AboutSection() {
             <p className="font-sans text-xs tracking-[0.2em] uppercase text-primary mb-4">
               About the Practitioner
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl tracking-tighter leading-heading text-foreground mb-6">
+            <h2 className="font-serif text-4xl md:text-5xl tracking-tighter leading-heading text-foreground mb-4">
               Ms Palak Mattoo
-              <br />
-              {/* <em className="text-primary text-3xl">RDN · ISSN · IFM</em> */}
             </h2>
+
+            {/* Certification credential ribbon */}
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                <Award size={12} className="shrink-0" />
+                HWN
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                <Award size={12} className="shrink-0" />
+                ACN
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                <Award size={12} className="shrink-0" />
+                WH
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide">
+                <Award size={12} className="shrink-0" />
+                CFN
+              </span>
+            </div>
             <p className="font-sans text-base leading-relaxed text-foreground/70 mb-5">
               I completed my Bachelor's in Food and Nutrition at PSPS (GCW), worked on nutrition-focused projects, and built my practice on one belief: <strong className="text-foreground font-medium">food is the most powerful medicine on your plate.</strong>
             </p>
